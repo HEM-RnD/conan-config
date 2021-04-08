@@ -1,0 +1,7 @@
+
+OS_CFLAGS=
+OS_CXXFLAGS=
+OS_LDFLAGS=
+
+[settings]
+os=None

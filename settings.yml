@@ -56,13 +56,10 @@ arch:
     armv5hf:
     armv6:
         cpu: [None, cortex-m1, cortex-m0, cortex-m0plus, cortex-m1.small-multiply, cortex-m0.small-multiply, cortex-m0plus.small-multiply]
-        mcu: [None, ANY]
     armv7:
         cpu: [None, generic-armv7-a, cortex-a5, cortex-a7, cortex-a8, cortex-a9, cortex-a12, cortex-a15, cortex-a17, cortex-r4, cortex-r5, cortex-r7, cortex-r8, cortex-m7, cortex-m4, cortex-m3]
-        mcu: [None, ANY]
     armv7hf: 
         cpu: [None, generic-armv7-a, cortex-a5, cortex-a7, cortex-a8, cortex-a9, cortex-a12, cortex-a15, cortex-a17, cortex-r4f, cortex-r5, cortex-r7, cortex-r8, cortex-m7, cortex-m4, cortex-m3]
-        mcu: [None, ANY]
     armv7s:
     armv7k:
     armv8:
@@ -92,7 +89,7 @@ compiler:
                   "9", "9.1", "9.2", "9.3",
                   "10", "10.1"]
         libcxx: [libstdc++, libstdc++11]
-        threads: [None, posix, win32] #  Windows MinGW
+        threads: [None, posix, win32, freertos] #  Windows MinGW
         exception: [None, dwarf2, sjlj, seh] # Windows MinGW
         cppstd: [None, 98, gnu98, 11, gnu11, 14, gnu14, 17, gnu17, 20, gnu20]
     Visual Studio: &visual_studio
