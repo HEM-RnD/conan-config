@@ -1,0 +1,9 @@
+include(compiler/arm-none-eabi-gcc)
+include(arch/cortex-m4)
+include(os/none)
+include(build_type/minsizerel)
+
+[env]
+CFLAGS=$ARCH_CFLAGS $OS_CFLAGS $BUILD_TYPE_CFLAGS
+CXXFLAGS=$ARCH_CXXFLAGS $OS_CXXFLAGS $BUILD_TYPE_CXXFLAGS
+LDFLAGS=$ARCH_LDFLAGS $OS_LDFLAGS $BUILD_TYPE_LDFLAGS

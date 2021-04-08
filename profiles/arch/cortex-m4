@@ -1,0 +1,8 @@
+ARCH_FLAGS_ALL=-mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=auto -fdata-sections -ffunction-sections
+ARCH_CFLAGS=$ARCH_FLAGS_ALL
+ARCH_CXXFLAGS=$ARCH_FLAGS_ALL -fno-rtti 
+ARCH_LDFLAGS=$ARCH_FLAGS_ALL -specs=nosys.specs -lc -lm -lnosys -Wl,--gc-sections
+
+[settings]
+arch=armv7hf
+arch.cpu=cortex-m4

@@ -3,44 +3,62 @@
 from string import Template
 
 
-build_types=[None, 'debug','release']
-cpus=['cortex-m7', 'cortex-m4']
-oses=[None, 'freertos']
-compilers=['arm-none-eabi-gcc']
+build_types=[None, 'debug','release', 'minsizerel', 'relwithdebinfo']
 
 def get_name(profile):
-    name = ""
+    name = profile['ARCH'] + '-' 
     if profile['OS']:
-        os = profile['OS']
-        name += f'{os}-'
-    name += profile['CPU']
+        name += profile['OS']
+    else:
+        name += 'none'
+    name += '-'
+    if profile['ABI_COMPILER']:
+        name += profile['ABI_COMPILER']
+    else:
+        if profile['ABI']:
+            name += profile['ABI']
+        else:
+            name += 'unknown'
+        name += '-'
+        if profile['COMPILER']:
+            name += profile['COMPILER']
+        else:
+            name += 'unknown'
     if profile['BUILD_TYPE']:
-        build_Type = profile['BUILD_TYPE']
-        name += f'.{build_Type}'
+        name += '.' + profile['BUILD_TYPE']
     return name
 
 def get_substitutions(profile):
     if not profile['OS']:
         profile['OS'] = "none"
     if not profile['BUILD_TYPE']:
-        profile['BUILD_TYPE'] = "release"
+        profile['BUILD_TYPE'] = "none"
     return profile
 
-profile_list = list()
-for compiler in compilers:
+def get_arm_none_eabi_gcc_profiles():
+    archs=['cortex-m7', 'cortex-m4']
+    oses=[None, 'freertos']
+    abi_compiler='eabi-gcc'
+    compiler='arm-none-eabi-gcc'
+
+    profile_list = list()
     for os in oses:
-        for cpu in cpus:
+        for arch in archs:
             for build_type in build_types:
                 profile_list.append({
                     'OS': os,
                     'COMPILER': compiler,
-                    'CPU': cpu,
+                    'ABI_COMPILER': abi_compiler,
+                    'ARCH': arch,
                     'BUILD_TYPE': build_type})
+    return profile_list
+
+profile_list = get_arm_none_eabi_gcc_profiles()
 
 for profile in profile_list:
     name = get_name(profile)
     substitutions = get_substitutions(profile)
-    with open('templates/gcc_cpu', 'r') as templateFile:
+    with open('templates/gcc', 'r') as templateFile:
         src = Template(templateFile.read())
         result = src.safe_substitute(substitutions)
         with open(f'profiles/{name}', 'w') as profileFile:

@@ -1,9 +1,0 @@
-include(compiler/arm-none-eabi-gcc)
-include(cpu/cortex-m7)
-include(os/freertos)
-include(build_type/debug)
-
-[env]
-CFLAGS=$CPU_CFLAGS $OS_CFLAGS $BUILD_TYPE_CFLAGS
-CXXFLAGS=$CPU_CXXFLAGS $OS_CXXFLAGS $BUILD_TYPE_CXXFLAGS
-LDFLAGS=$CPU_LDFLAGS $OS_LDFLAGS $BUILD_TYPE_LDFLAGS
