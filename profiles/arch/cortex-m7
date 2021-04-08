@@ -1,7 +1,7 @@
-CPU_FLAGS_ALL=-mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=auto -fdata-sections -ffunction-sections
-CPU_CFLAGS=$CPU_FLAGS_ALL
-CPU_CXXFLAGS=$CPU_FLAGS_ALL -fno-rtti 
-CPU_LDFLAGS=$CPU_FLAGS_ALL -specs=nosys.specs -lc -lm -lnosys -Wl,--gc-sections
+ARCH_FLAGS_ALL=-mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=auto -fdata-sections -ffunction-sections
+ARCH_CFLAGS=$ARCH_FLAGS_ALL
+ARCH_CXXFLAGS=$ARCH_FLAGS_ALL -fno-rtti 
+ARCH_LDFLAGS=$ARCH_FLAGS_ALL -specs=nosys.specs -lc -lm -lnosys -Wl,--gc-sections
 
 [settings]
 arch=armv7hf

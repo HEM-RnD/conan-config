@@ -63,9 +63,3 @@ for profile in profile_list:
         result = src.safe_substitute(substitutions)
         with open(f'profiles/{name}', 'w') as profileFile:
             profileFile.write(result)
-
-
-# with open('foo.txt', 'r') as f:
-#     src = Template(f.read())
-#     result = src.substitute(d)
-#     print(result)
