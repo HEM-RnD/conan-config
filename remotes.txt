@@ -1,2 +1,1 @@
-rnd.hem-e.pl/conan-local https://rnd.hem-e.pl/artifactory/api/conan/conan-local True
-rnd.hem-e.pl/conan-remote https://rnd.hem-e.pl/artifactory/api/conan/conan-remote True
+hem https://rnd.hem-e.pl/artifactory/api/conan/conan True
