@@ -27,9 +27,6 @@ definitions:
           - conan create . hem/"$CHANNEL"
           - VERSION=`cat .version/Version.txt`
           - conan upload {{ name }}/"$VERSION" --all -r hem --confirm
-        artifacts:
-          - build/bin/{{ name }}
-
 pipelines:
   default:
     - step: *Versioning
