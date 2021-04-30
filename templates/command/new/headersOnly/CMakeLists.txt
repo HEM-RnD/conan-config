@@ -3,9 +3,12 @@ project({{ name }})
 
 message("Main cmake")
 
-include(cmake/packagemanager.cmake)
-
 add_library(${CMAKE_PROJECT_NAME} INTERFACE)
+
+#Include conanbuildinfo.cmake from cmake generator. 
+#Conan has to be installed before cmake run or conan-cmake-integration configured in cmake install parameters.
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup(TARGETS)
 
 target_include_directories(${CMAKE_PROJECT_NAME} INTERFACE inc)
 target_compile_features(${CMAKE_PROJECT_NAME} INTERFACE cxx_std_17)
