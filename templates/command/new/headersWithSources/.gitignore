@@ -54,7 +54,7 @@ test_package/build
 # Code formatter
 .clang-format
 
-# Siatic code analysis
+# Static code analysis
 .clang-tidy
 
 # Version
