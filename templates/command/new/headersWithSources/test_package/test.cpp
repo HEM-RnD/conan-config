@@ -6,7 +6,7 @@
 
 std::function<void(void)> action = [](){
     std::cout << "Hello again from {{name}} package" << std::endl;
-}
+};
 
 int main() {
 	std::cout<<"Hello from {{ name }} package!" << std::endl;
