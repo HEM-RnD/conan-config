@@ -21,12 +21,12 @@ target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC
     # insert here the packages names, that the package depands on, eg.: CONAN_PKG::HEM_OSAL
 )
 
-install(DIRECTORY inc/ 
-        DESTINATION inc/HEM/${CMAKE_PROJECT_NAME}
+install(DIRECTORY .
+        DESTINATION .
         FILES_MATCHING PATTERN "*.hpp")
 
-install(DIRECTORY inc/ 
-        DESTINATION inc/HEM/${CMAKE_PROJECT_NAME}
+install(DIRECTORY .
+        DESTINATION .
         FILES_MATCHING PATTERN "*.h")
 
 install(TARGETS ${CMAKE_PROJECT_NAME}

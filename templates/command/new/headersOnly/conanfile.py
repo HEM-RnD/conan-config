@@ -34,7 +34,7 @@ class {{package_name}}Conan(ConanFile):
         cmake.install()
 
     def package_info(self):
-        self.cpp_info.includedirs = ["inc"]
+        self.cpp_info.includedirs = ["inc/HEM/{{ name }}"]
 
     def package_id(self):
         self.info.header_only()
