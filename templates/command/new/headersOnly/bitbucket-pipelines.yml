@@ -17,12 +17,12 @@ definitions:
         caches:
           - docker
     - step: &CreatePackage
-        name: Build
+        name: CreatePackage
         image:
           name: hemelectronics/buildcpp-native-gcc:3.0.0
           run-as-user: 1000
         script:
-          - echo "Build running"
+          - echo "CreatePackage running"
           - CHANNEL=$(python3 ./getChannel.py)
           - conan create . hem/"$CHANNEL"
           - VERSION=`cat .version/Version.txt`

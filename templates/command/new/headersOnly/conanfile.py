@@ -15,7 +15,7 @@ class {{package_name}}Conan(ConanFile):
     default_options = {"shared": False}
     exports_sources = "*", "!build/*", "!.*/*", "!.gitignore", "!bitbucket-pipelines.yml", "!*conanfile.py", "!.clang-tidy", "!.clang-format", ".version/*",
     requires = [] # Insert here the other packages that the {{ name }} package depend on 
-    build_requires = ["HEM_TestingFramework/0.0.1@hem/stable"]
+    build_requires = ["HEM_TestingFramework/0.0.1@hem/stable", "HEM_ClangTidy/[>=0.0.1, loose=False]@hem/stable"]
 
     def set_version(self):
         try:
@@ -38,3 +38,6 @@ class {{package_name}}Conan(ConanFile):
 
     def package_id(self):
         self.info.header_only()
+
+    def imports(self):
+        self.copy("*", dst="", src="analyser", root_package="HEM_ClangTidy")
