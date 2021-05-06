@@ -1,0 +1,33 @@
+clone:
+  depth: full
+
+definitions:
+  steps:
+    - step: &Versioning
+        name: Versioning
+        script:
+          - pipe: docker://hemelectronics/pipe-gitflow-versioning:0.1.3
+            variables:
+              BITBUCKET_USERNAME: "${BITBUCKET_USERNAME}"
+              BITBUCKET_PASSWORD: "${BITBUCKET_PASSWORD}"
+        artifacts:
+          - .version/*
+        services:
+          - docker
+        caches:
+          - docker
+    - step: &CreatePackage
+        name: CreatePackage
+        image:
+          name: hemelectronics/buildcpp-native-gcc:3.0.0
+          run-as-user: 1000
+        script:
+          - echo "CreatePackage running"
+          - CHANNEL=$(python3 ./getChannel.py)
+          - conan create . hem/"$CHANNEL"
+          - VERSION=`cat .version/Version.txt`
+          - conan upload {{ name }}/"$VERSION" --all -r hem --confirm
+pipelines:
+  default:
+    - step: *Versioning
+    - step: *CreatePackage
