@@ -50,6 +50,7 @@ Thumbs.db
 
 # Binary folders
 test_package/build
+build
 
 # Code formatter
 .clang-format
