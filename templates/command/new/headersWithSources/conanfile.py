@@ -17,7 +17,7 @@ class {{package_name}}Conan(ConanFile):
     requires = [] # Insert here the other packages that the {{ name }} package depend on 
     build_requires = ["HEM_TestingFramework/[>=0.0.1, loose=False]@hem/stable", 
                       "HEM_ClangTidy/[>=0.1.0, loose=False]@hem/stable",
-                      "HEM_ClangTidy/[>=0.1.0, loose=False]@hem/stable"]
+                      "HEM_ClangFormat/[>=0.1.0, loose=False]@hem/stable"]
 
     def set_version(self):
         try:
